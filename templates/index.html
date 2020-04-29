@@ -38,6 +38,7 @@
         <!-- Image-->
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
+                <h3>Featured Mars Image</h3>
                <img src="{{ mars_data.feature_image_url }}">
             </div>
        
@@ -60,23 +61,13 @@
 
             <h1 style="text-align: center;"> Mars Hemispheres</h1>
             <hr>
-    <br>
+            <br>
 
-            {% for image in mars_data.hemisphere_data%}
-            <div style="padding-left: 25%;padding-right: 20%;">
-                
-                        <div class="card col-lg-6" style="align-content: center; padding-bottom: 15px;" >
-                            <div class="col-lg-8 col-md-6" style="border: solid grey 1px; ; text-align: center;">
-                                <img src="{{image.img_url}}"  width="200" height="200" alt="Mars Image" >
-                                <div class="card-body" >
-                                    <p style="font-weight: bolder; padding-top: 15px; font-size: 12px;" class="card-text"> {{ image.title }}
-                                </div>
-                            </div> 
-                        </div>
-                </div>
-            </div>
+        {% for image in mars_data.hemisphere_data %}
+            
+            <img src="image.img_url" class="img-fluid" alt="Responsive image">
 
-            {% endfor %}
+        {% endfor %}
 
 
 

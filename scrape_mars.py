@@ -8,9 +8,6 @@ import os
 import time
 
 
-
-
-
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
@@ -19,7 +16,6 @@ def init_browser():
 
 def scrape():
     browser = init_browser()
-    
     
 
     # Mars News
@@ -49,27 +45,14 @@ def scrape():
     main_image_items = soup.find('article', class_="carousel_item")
     main_image= main_image_items['style'].split("'")[1]
     main_image_url=main_url + main_image
-    print(main_image)
+    
     print(main_image_url)
 
     feature_image_items = soup.find('li', class_="slide")
     feature_image = soup.find("img", class_="thumb")["src"]
     feature_image_url = main_url + feature_image
 
-    print(feature_image)
     print(feature_image_url)
-
-
-    # Mars Weather
-
-    weather_url='https://twitter.com/marswxreport?lang=en'
-    browser.visit(weather_url)
-    time.sleep(10)
-
-    #mars_weather = soup.find('article').find_all('span')[4].text
-    mars_weather = soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
-
-    print(mars_weather)
 
 
     # Mars Facts
@@ -95,13 +78,10 @@ def scrape():
     hemi_main_url='https://astrogeology.usgs.gov'
     hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(hemispheres_url)
-    time.sleep(5)
+    time.sleep(8)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
-
-    hemispheres = []
-    results = soup.find_all("div", class_="item")
 
     hemispheres_items = soup.find_all('div', class_='item')
 
@@ -114,7 +94,7 @@ def scrape():
         # Links
         hemi_href = hemisphere.a["href"] 
         browser.visit(hemi_main_url + hemi_href)
-        time.sleep(2)
+        time.sleep(5)
 
         image_html = browser.html
         image_soup = BeautifulSoup(image_html, 'html.parser')
@@ -126,6 +106,19 @@ def scrape():
         hemisphere_data.append({"title": title, "img_url": img_url})
         
     print(hemisphere_data)
+
+    # Mars Weather
+
+    weather_url='https://twitter.com/marswxreport?lang=en'
+    browser.visit(weather_url)
+    time.sleep(10)
+
+    #mars_weather = soup.find('article').find_all('span')[4].text
+    mars_weather = soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
+
+    print(mars_weather)
+
+    # Collect data
 
     mars_data= {
         "news_title": news_title,
@@ -147,4 +140,3 @@ def scrape():
 
 if __name__ == "__main__":
     print(scrape())  
-#     python scrape_mars.py p
