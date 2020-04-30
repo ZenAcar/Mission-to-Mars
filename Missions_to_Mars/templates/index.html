@@ -76,47 +76,19 @@
                     transform: scale(1.25);
                 }
             </style>
-            <div class="row">
-                <div class="col-md-6" style="padding: 40px;">
-                    <div class="title" style="padding-bottom: 10px;">Cerberus Hemisphere Enhanced</div>
-                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg">
-                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg" class="img-fluid zoom">
-                    </a>
+            {% for image in mars_data.hemisphere_data %}
+                <div class="row">
+                    <div class="col-md-6" style="padding: 40px;">
+                        <div class="title" style="padding-bottom: 10px;">{{ image.title }}</div>
+                        <a href="{{ image.img_url }}">
+                            <img src="{{ image.img_url }}" class="img-fluid zoom">
+                        </a>
+                    </div>
+            {% endfor %}      
                 </div>
-                <div class="col-md-6" style="padding: 40px;">
-                    <div class="title" style="padding-bottom: 10px;">Schiaparelli Hemisphere Enhanced</div>
-                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg">
-                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg" class="img-fluid zoom">
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6" style="padding: 40px;">
-                    <div class="title" style="padding-bottom: 10px;">Syrtis Major Hemisphere Enhanced</div>
-                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg">
-                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg" class="img-fluid zoom">
-                    </a>
-                </div>
-                <div class="col-md-6" style="padding: 40px;">
-                    <div class="title" style="padding-bottom: 10px;">Valles Marineris Hemisphere Enhanced</div>
-                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg">
-                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg" class="img-fluid zoom">
-                    </a>
-                </div>
-            </div>
+            
         </div>
     </div>
-</div>
-
-
-
-        </div>   
-    
-    </div> 
-
-        
-
-    
 
 
 
