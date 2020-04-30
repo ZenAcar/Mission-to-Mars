@@ -8,7 +8,6 @@ import os
 import time
 
 
-
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
@@ -23,7 +22,7 @@ def scrape():
 
     news_url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(news_url) 
-    time.sleep(5)
+    time.sleep(8)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -38,7 +37,7 @@ def scrape():
     main_url='https://www.jpl.nasa.gov'
     img_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(img_url)
-    time.sleep(10)
+    time.sleep(8)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -103,7 +102,7 @@ def scrape():
         img_items = image_soup.find('div', class_='downloads')
         img_url = img_items.find('li').a['href']
         
-        # Dictionary
+        # Store data in a dictionary
         hemisphere_data.append({"title": title, "img_url": img_url})
         
     print(hemisphere_data)
@@ -114,12 +113,12 @@ def scrape():
     browser.visit(weather_url)
     time.sleep(10)
 
-    #mars_weather = soup.find('article').find_all('span')[4].text
-    mars_weather = soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
+    mars_weather = soup.find('article').find_all('span')[4].text
+    #mars_weather = soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
 
     print(mars_weather)
 
-    # Collect data
+    # Store data in a dictionary
 
     mars_data= {
         "news_title": news_title,
@@ -139,5 +138,9 @@ def scrape():
     
     return mars_data
 
-if __name__ == "__main__":
-    print(scrape())  
+if __name__ == "__main__": 
+    data = scrape()
+    print(data)
+
+   
+

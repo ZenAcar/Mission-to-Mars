@@ -1,0 +1,12 @@
+def init_mongo():
+    conn = 'mongodb://localhost:27017'
+    client = pymongo.MongoClient(conn)
+    db = client.mars_db
+    collection = db.mars
+    #collection.drop() # if it exists drop it 
+    return db.mars
+
+
+def save_mongo(data):
+    collection = init_mango()
+    collection.insert_one(data)
