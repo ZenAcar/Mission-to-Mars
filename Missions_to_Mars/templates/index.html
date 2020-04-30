@@ -30,28 +30,28 @@
         <!-- News Container -->
         <div class="container">
             <h3 style="color: rgb(121, 11, 11)">  Latest Mars News </h3>
-            <h6 style="color: rgb(121, 11, 11)">{{ mars_data.news_title}}</h6>
-            <p>{{ mars_data.news_p }}</p>
+            <h6 style="color: rgb(121, 11, 11)">{{ mars.news_title}}</h6>
+            <p>{{ mars.news_p }}</p>
         </div>
 
         <br>
         <!-- Image-->
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12">
-                <h3>Featured Mars Image</h3>
-               <img src="{{ mars_data.feature_image_url }}">
+                <h3 style="color: rgb(121, 11, 11);;">Featured Mars Image</h3>
+               <img src="{{ mars.feature_image_url }}">
             </div>
        
             <!-- Weather-->
             <div class="col-lg-4 col-md-4 col-sm-12">
                <div class="card", style="border-color: white;">
                   <h4 style="margin-left: 20px; color: rgb(121, 11, 11);">Current Weather on Mars</h4>
-                  <div style="margin-left: 20px ;">{{ mars_data.mars_weather }}</div>
+                  <div style="margin-left: 20px ;">{{ mars.mars_weather }}</div>
                </div>
                <br>
             <!-- Fact Table -->
                 <h3 style="margin-left: 20px ; color: rgb(121, 11, 11);">Mars Facts</h3>
-                <div class="row", style="margin-left: 20px; border-color: white;" >{{ mars_data.html_table|safe }}</div>
+                <div class="row", style="margin-left: 20px; border-color: white;" >{{ mars.html_table|safe }}</div>
                 </div>
              <br>
             </div>
@@ -59,25 +59,60 @@
             <br>
             <br>
 
-            <h1 style="text-align: center;"> Mars Hemispheres</h1>
+            <h1 style="text-align: center; color: rgb(121, 11, 11);;"> Mars Hemispheres</h1>
             <hr>
             <br>
 
-        {% for image in mars_data.hemisphere_data %}
-            
-            <img src="image.img_url" class="img-fluid" alt="Responsive image">
+        <!-- Content-->
+        <div class="row">
+            <div class="col-lg-12 ">
+                <p style="font-size: x-large;">Click any plot for full image.</p>
+            </div>
+        </div>
 
-        {% endfor %}
+        <div class="container">
+            <style>
+                .zoom:hover {
+                    transform: scale(1.25);
+                }
+            </style>
+            <div class="row">
+                <div class="col-md-6" style="padding: 40px;">
+                    <div class="title" style="padding-bottom: 10px;">Cerberus Hemisphere Enhanced</div>
+                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg">
+                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg" class="img-fluid zoom">
+                    </a>
+                </div>
+                <div class="col-md-6" style="padding: 40px;">
+                    <div class="title" style="padding-bottom: 10px;">Schiaparelli Hemisphere Enhanced</div>
+                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg">
+                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg" class="img-fluid zoom">
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" style="padding: 40px;">
+                    <div class="title" style="padding-bottom: 10px;">Syrtis Major Hemisphere Enhanced</div>
+                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg">
+                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg" class="img-fluid zoom">
+                    </a>
+                </div>
+                <div class="col-md-6" style="padding: 40px;">
+                    <div class="title" style="padding-bottom: 10px;">Valles Marineris Hemisphere Enhanced</div>
+                    <a href="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg">
+                        <img src="http://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg" class="img-fluid zoom">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-            
-
-
-           
-
-
-        </div>    
+        </div>   
+    
+    </div> 
 
         
 
