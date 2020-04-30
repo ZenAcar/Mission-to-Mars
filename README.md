@@ -131,11 +131,3 @@ Trilogy Education Services © 2019. All Rights Reserved.
 
 
 
-
-def init_mongo():
-    conn = 'mongodb://localhost:27017'
-    client = pymongo.MongoClient(conn)
-    db = mission_to_mars_db
-    collection= db.mars
-    #collection.drop()
-    return db.mars
