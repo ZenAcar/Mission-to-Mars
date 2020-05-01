@@ -83,7 +83,7 @@ def scrape():
     soup = BeautifulSoup(html, 'html.parser')
 
     mars_weather = soup.find('article').find_all('span')[4].text
-    #mars_weather=soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
+    #mars_weather = soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
 
     print(mars_weather)
 
@@ -109,7 +109,7 @@ def scrape():
         # Links
         hemi_href = hemisphere.a["href"] 
         browser.visit(hemi_main_url + hemi_href)
-        time.sleep(20)
+        time.sleep(10)
 
         image_html = browser.html
         image_soup = BeautifulSoup(image_html, 'html.parser')

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mission to Mars</title>
     <!--CSS Link-->   
     <link rel="stylesheet" href="static/style.css">
     <!-- Bootstrap CSS -->
@@ -63,20 +63,26 @@
         <br>
 
         <!-- Hemispheres-->
-        <h3 style="text-align: center; color: rgb(121, 11, 11)"> Mars Hemispheres</h3>
+
+        <div class="row"></div>
+            <h3 style="text-align: center; color: rgb(121, 11, 11)"> Mars Hemispheres</h3>
+            <br>
+            <h6 style="color: rgb(121, 11, 11)">Click any plot to see full image.</h6>
         <br>
         <div class="row">
         {% for image in mars.hemisphere_data %}
             <div class=col-md-6>
               <div class="card mb-3">
-                <img class= "img-fluid" src="{{ image.img_url }}" class="card-img-top">
+                <a href="{{ image.img_url }}">
+                    <img class= "img-fluid" src="{{ image.img_url }}" class="card-img-top">
+                </a>
                 <div class="card-body">
                   <h5 class="card-title">{{ image.title}}</h5>
                 </div>
               </div>
             </div>
         {% endfor %}
-
+        </div>
     </div>
 
 
