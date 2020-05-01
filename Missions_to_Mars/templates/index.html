@@ -20,7 +20,7 @@
     <div class="container">
 
         <!-- Banner -->
-        <div class="jumbotron text-center" style="background-image: url({{mars.main_image_url}}); background-size: 100%; height: 100%; ">
+        <div class="jumbotron text-center" style="background-image: url({{mars.feature_image_url}}); background-size: 100%; height: 100%; ">
             <h1 class="display-4 text-white"><b>Mission to Mars</b></h1>
             <a class="btn btn-lg text-white" style="background-color: rgb(121, 11, 11);" href="/scrape" role="button">Scrape New Data</a>
         </div>
@@ -37,13 +37,13 @@
         <br>
         <!-- Image-->
         <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="col-l-8 col-md-8 ">
                 <h3 style="color: rgb(121, 11, 11);;">Featured Mars Image</h3>
-               <img src="{{ mars.feature_image_url }}">
+               <img style="width: 600px" src="{{ mars.feature_image_url }}">
             </div>
             <br>
             <!-- Weather-->
-            <div class="col-lg-4 col-sm-12">
+            <div class="col-l-4 col-md-4 ">
                <div class="card", style="border-color: white;">
                   <h4 style="margin-left: 20px; color: rgb(121, 11, 11);">Current Weather on Mars</h4>
                   <div style="margin-left: 20px ;">{{ mars.mars_weather }}</div>

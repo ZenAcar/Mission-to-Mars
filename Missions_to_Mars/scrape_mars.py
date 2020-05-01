@@ -43,17 +43,18 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-    main_image_items = soup.find('article', class_="carousel_item")
-    main_image= main_image_items['style'].split("'")[1]
-    main_image_url=main_url + main_image
-    
-    print(main_image_url)
-
-    feature_image_items = soup.find('li', class_="slide")
-    feature_image = soup.find("img", class_="thumb")["src"]
-    feature_image_url = main_url + feature_image
+    feature_image_items = soup.find('article', class_="carousel_item")
+    feature_image= feature_image_items['style'].split("'")[1]
+    feature_image_url=main_url + feature_image
 
     print(feature_image_url)
+
+    last_image_items = soup.find('li', class_="slide")
+    last_image = last_image_items.find("img", class_="thumb")["src"]
+    last_image_url = main_url + last_image
+    
+    print(last_image_url)
+
 
 
     # Mars Facts
@@ -129,7 +130,7 @@ def scrape():
     mars_data= {
         "news_title": news_title,
         "news_p": news_p,
-        "main_image_url": main_image_url,
+        "last_image_url": last_image_url,
         "feature_image": feature_image,
         "feature_image_url": feature_image_url,
         "mars_weather": mars_weather,
