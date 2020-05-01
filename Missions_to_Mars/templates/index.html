@@ -20,7 +20,7 @@
     <div class="container">
 
         <!-- Banner -->
-        <div class="jumbotron text-center" style="background-image: url(https://www.jpl.nasa.gov/spaceimages/images/wallpaper/PIA18906-1920x1200.jpg); background-size: 100%; height: 100%; ">
+        <div class="jumbotron text-center" style="background-image: url({{mars.main_image_url}}); background-size: 100%; height: 100%; ">
             <h1 class="display-4 text-white"><b>Mission to Mars</b></h1>
             <a class="btn btn-lg text-white" style="background-color: rgb(121, 11, 11);" href="/scrape" role="button">Scrape New Data</a>
         </div>
@@ -41,9 +41,9 @@
                 <h3 style="color: rgb(121, 11, 11);;">Featured Mars Image</h3>
                <img src="{{ mars.feature_image_url }}">
             </div>
-       
+            <br>
             <!-- Weather-->
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-4 col-sm-12">
                <div class="card", style="border-color: white;">
                   <h4 style="margin-left: 20px; color: rgb(121, 11, 11);">Current Weather on Mars</h4>
                   <div style="margin-left: 20px ;">{{ mars.mars_weather }}</div>
@@ -53,42 +53,32 @@
                 <h3 style="margin-left: 20px ; color: rgb(121, 11, 11);">Mars Facts</h3>
                 <div class="row", style="margin-left: 20px; border-color: white;" >{{ mars.html_table|safe }}</div>
                 </div>
+    
              <br>
             </div>
-            <br>
-            <br>
-            <br>
+        </div>
 
-            <h1 style="text-align: center; color: rgb(121, 11, 11);;"> Mars Hemispheres</h1>
-            <hr>
-            <br>
+        <br>
+        <br>
+        <br>
 
-        <!-- Content-->
+        <!-- Hemispheres-->
+        <h3 style="text-align: center; color: rgb(121, 11, 11)"> Mars Hemispheres</h3>
+        <br>
         <div class="row">
-            <div class="col-lg-12 ">
-                <p style="font-size: x-large;">Click any plot for full image.</p>
-            </div>
-        </div>
-
-        <div class="container">
-            <style>
-                .zoom:hover {
-                    transform: scale(1.25);
-                }
-            </style>
-            {% for image in mars.hemisphere_data %}
-                <div class="row">
-                    <div class="col-md-6" style="padding: 40px;">
-                        <div class="title" style="padding-bottom: 10px;">{{ image.title }}</div>
-                        <a href="{{ image.img_url }}">
-                            <img src="{{ image.img_url }}" class="img-fluid zoom">
-                        </a>
-                    </div>
-            {% endfor %}      
+        {% for image in mars.hemisphere_data %}
+            <div class=col-md-6>
+              <div class="card mb-3">
+                <img class= "img-fluid" src="{{ image.img_url }}" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">{{ image.title}}</h5>
                 </div>
-            
-        </div>
+              </div>
+            </div>
+        {% endfor %}
+
     </div>
+
 
 </body>
 

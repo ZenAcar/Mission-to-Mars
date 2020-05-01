@@ -22,13 +22,14 @@ def scrape():
 
     news_url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(news_url) 
-    time.sleep(8)
+    time.sleep(5)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-    news_title = soup.find('div', class_='content_title').text
-    news_p = soup.find('div', class_='article_teaser_body').text
+    news_items = soup.find("div", class_='list_text')
+    news_title = news_items.find('div', class_="content_title").find('a').text
+    news_p = news_items.find('div',class_="article_teaser_body").text
     print(f'{news_title} : \n{news_p}')
 
 
@@ -37,7 +38,7 @@ def scrape():
     main_url='https://www.jpl.nasa.gov'
     img_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(img_url)
-    time.sleep(8)
+    time.sleep(5)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -59,7 +60,7 @@ def scrape():
 
     fact_url = "http://space-facts.com/mars/"
     browser.visit(fact_url)
-    time.sleep(5)
+    time.sleep(2)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -72,13 +73,27 @@ def scrape():
     html_table=html_table.replace('\n', '')
     print(html_table)
 
+    # Mars Weather
+
+    weather_url='https://twitter.com/marswxreport?lang=en'
+    browser.visit(weather_url)
+    time.sleep(15)
+
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+
+    mars_weather = soup.find('article').find_all('span')[4].text
+    #mars_weather=soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
+
+    print(mars_weather)
+
 
     # Mars Hemispheres
 
     hemi_main_url='https://astrogeology.usgs.gov'
     hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(hemispheres_url)
-    time.sleep(8)
+    time.sleep(10)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -94,7 +109,7 @@ def scrape():
         # Links
         hemi_href = hemisphere.a["href"] 
         browser.visit(hemi_main_url + hemi_href)
-        time.sleep(5)
+        time.sleep(20)
 
         image_html = browser.html
         image_soup = BeautifulSoup(image_html, 'html.parser')
@@ -107,23 +122,13 @@ def scrape():
         
     print(hemisphere_data)
 
-    # Mars Weather
 
-    weather_url='https://twitter.com/marswxreport?lang=en'
-    browser.visit(weather_url)
-    time.sleep(10)
-
-    mars_weather = soup.find('article').find_all('span')[4].text
-    #mars_weather = soup.find_all("span", class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")[27].text
-
-    print(mars_weather)
 
     # Store data in a dictionary
 
     mars_data= {
         "news_title": news_title,
         "news_p": news_p,
-        "main_image": main_image,
         "main_image_url": main_image_url,
         "feature_image": feature_image,
         "feature_image_url": feature_image_url,
